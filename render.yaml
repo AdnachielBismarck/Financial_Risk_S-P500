@@ -1,6 +1,10 @@
 services:
   - type: web
     name: financial-risk-dashboard
-    runtime: python
-    buildCommand: pip install -r requirements.txt
-    startCommand: gunicorn app.app:server
+    env: python
+    plan: free
+    buildCommand: "pip install -r requirements.txt"
+    startCommand: "gunicorn app.app:server"
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.11.9
