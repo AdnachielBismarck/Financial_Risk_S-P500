@@ -20,3 +20,12 @@ data/raw/
 
 !data/processed/
 !data/processed/sp500_model_results.csv
+
+# Old versions (keep locally, not in repo)
+app/app_version*.py
+
+# Notebooks auxiliares
+notebooks/Models.ipynb
+
+# Datos no necesarios para producción
+data/processed/sp500_features.csv
