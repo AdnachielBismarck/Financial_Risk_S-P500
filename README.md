@@ -1,142 +1,184 @@
 # Financial Risk Monitoring Dashboard
 
-## Overview
+## Live Application
 
-This project presents a **data-driven framework for monitoring financial market risk** using statistical modeling and interactive visualization.
-
-The system identifies **extreme market events** and models their dynamics through:
-
-- Volatility estimation (GARCH)
-- Event intensity modeling (Poisson process)
-
-The result is an **interactive dashboard** that allows users to explore how risk evolves over time.
+https://financial-risk-dashboard.onrender.com/
 
 ---
 
-## Problem Statement
+## Executive Summary
 
-Financial markets are characterized by:
+This project develops a **data-driven financial risk monitoring system** for the S&P 500, integrating econometric models and interactive visualization to analyze how market risk evolves over time.
 
-- Sudden extreme events (crashes, shocks)
-- Time-varying volatility
-- Clustering of risk
+The system combines:
 
-Traditional static metrics fail to capture these dynamics.
+- Volatility modeling (GARCH)
+- Extreme event detection
+- Event intensity estimation (Poisson process)
 
-This project addresses this gap by building a **dynamic risk monitoring system**.
+to provide a **dynamic view of financial risk**, enabling deeper analysis beyond traditional static metrics.
 
 ---
 
-## Methodology
+## Business Problem
 
-### 1. Data Collection
-- Historical S&P 500 price data
-- Daily frequency
+Financial markets are inherently unstable and exhibit:
 
-### 2. Feature Engineering
-- Log returns
-- Volatility proxy
-- Extreme event detection (percentile threshold)
+- Volatility clustering  
+- Sudden extreme events (crashes, shocks)  
+- Non-constant risk regimes  
 
-### 3. Modeling
+Most traditional approaches rely on **static risk measures**, which fail to capture these dynamics.
 
-#### Volatility Model
+This project addresses this limitation by building a **dynamic risk monitoring framework**, allowing users to track how risk evolves and clusters over time.
+
+---
+
+## Analytical Approach
+
+### Data Source
+- Historical S&P 500 price data  
+- Daily frequency  
+
+---
+
+### Feature Engineering
+
+- Log returns  
+- Rolling volatility proxy  
+- Extreme event detection using percentile thresholds  
+
+---
+
+### Modeling
+
+**1. Volatility Modeling**
 - GARCH(1,1)
-- Captures volatility clustering
+- Captures persistence and clustering in volatility
 
-#### Event Model
-- Poisson-based intensity λ(t)
-- Measures frequency of extreme events
+**2. Event Modeling**
+- Poisson-based intensity function λ(t)
+- Estimates frequency of extreme market events
 
 ---
 
-## Dashboard Features
+## Dashboard Overview
 
-- Market price evolution
-- Return series with extreme events
-- Time-varying volatility
-- Dynamic risk intensity λ(t)
+The interactive dashboard enables users to:
 
-Interactive filters:
-- Date range selection
+- Analyze S&P 500 price evolution  
+- Identify extreme return events  
+- Track time-varying volatility  
+- Monitor dynamic risk intensity λ(t)  
+
+### Key Features
+
+- Interactive date filtering  
+- Multi-layer visualization (price, returns, volatility, events)  
+- Real-time exploratory analysis of market regimes  
+
+---
+
+## Example Use Case
+
+During periods of financial stress (e.g., crisis-like behavior), the model shows:
+
+- Increased volatility (GARCH output)  
+- Higher frequency of extreme returns  
+- Elevated event intensity λ(t)  
+
+This allows analysts to:
+
+- Detect risk regime shifts  
+- Identify clustering of extreme events  
+- Support risk-aware decision-making  
 
 ---
 
 ## Key Insights
 
-- Risk is **not constant** — it evolves dynamically  
-- Extreme events tend to **cluster in time**  
-- High volatility regimes correspond to **increased event intensity**  
+- Market risk is **time-varying and non-stationary**  
+- Extreme events exhibit **temporal clustering**  
+- Volatility and event intensity are **strongly correlated**  
 
----
-
-## Demo
-
-The dashboard is deployed and allows interactive exploration of market risk.
-
-*(Add your Render link here)*
+These findings highlight the importance of **dynamic modeling in financial risk analysis**.
 
 ---
 
 ## Tech Stack
 
-- Python
-- Pandas
-- ARCH (GARCH modeling)
-- Dash (interactive dashboard)
-- Plotly
+- Python  
+- Pandas  
+- ARCH (GARCH modeling)  
+- Dash  
+- Plotly  
 
 ---
 
 ## Project Structure
 
+```bash
 Financial_Risk_Project/
 │
+├── app/
+│   ├── __init__.py
+│   └── app.py                 # Dash application (entry point)
+│
 ├── data/
-│ ├── raw/
-│ └── processed/
+│   ├── raw/                  # Original datasets
+│   └── processed/            # Cleaned and feature-engineered data
 │
 ├── notebooks/
-│ ├── 01_data_collection.ipynb
-│ ├── 02_feature_engineering.ipynb
-│ ├── 03_modeling.ipynb
-│
-├── src/
-│ ├── features.py
-│ ├── models.py
-│ └── utils.py
-│
-├── app/
-│ └── app.py
+│   ├── 01_data_collection.ipynb
+│   ├── 02_feature_engineering.ipynb
+│   ├── 03_modeling.ipynb
 │
 ├── reports/
-│ └── executive_report.pdf
+│   └── Financial_Risk_Report.pdf   # Executive summary of findings
 │
 ├── requirements.txt
-├── render.yaml
+├── render.yaml              # Deployment configuration (Render)
 └── README.md
-
-
+```
 ---
 
 ## Limitations
 
-- Based on historical data
-- Does not include macroeconomic variables
-- Simplified event modeling assumptions
+- Based exclusively on historical data  
+- No integration of macroeconomic indicators  
+- Simplified assumptions in Poisson event modeling  
 
 ---
 
-## Future Work
+## Future Improvements
 
-- Regime detection (under development)
-- Real-time data integration
-- Predictive risk modeling
+- Regime-switching models (Markov Switching / HMM)  
+- Real-time data ingestion (API integration)  
+- Predictive risk modeling (forecasting volatility and events)  
+- Portfolio-level risk extension  
 
 ---
+## Run Locally
+
+Clone the repository:
+
+```bash
+git clone https://github.com/AdnachielBismarck/Financial_Risk_S-P500.git
+cd Financial_Risk_S-P500
+```
+
+Install dependencies:
+
+- pip install -r requirements.txt
+
+Run the application:
+
+- python app/app.py
+
+The app will be available at:
+
+- http://127.0.0.1:8050/
 
 ## Author
 
 Adnachiel Bismarck Avendaño Chavez
-
----
